@@ -1,3 +1,2 @@
 .venv/
-DATABASE_URL=postgresql+psycopg2://obed:password@localhost:5432/pdfchat
-OPENAI_API_KEY=sk-xxxxx
+.env
