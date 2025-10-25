@@ -1,0 +1,65 @@
+# -----------------------------
+# FraudLens .gitignore
+# -----------------------------
+
+# Environment variables
+.env
+.env.*
+
+# Python cache / build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.pkl
+*.egg-info/
+*.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE / editor settings
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs and runtime
+logs/
+*.log
+
+# System files
+Thumbs.db
+*.bak
+*.tmp
+
+# OS / macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Jupyter / Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Coverage and test artifacts
+.coverage
+htmlcov/
+.tox/
+pytest_cache/
+.mypy_cache/
+
+# Local data or examples
+data/
+*.csv
+*.json
+*.xlsx
+
+# Cache folders (LangChain / API)
+.cache/
