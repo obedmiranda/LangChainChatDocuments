@@ -1,8 +1,10 @@
 from dotenv import load_dotenv
+import os
 from langchain_openai import OpenAIEmbeddings
 from langchain_core.documents import Document
 from langchain_postgres.vectorstores import PGVector
-load_dotenv()  # carga variables desde .env
+
+load_dotenv()
 
 async def store_embeddings(chunks: list[str], session_id: str, document_id: str):
     docs = [
@@ -16,20 +18,18 @@ async def store_embeddings(chunks: list[str], session_id: str, document_id: str)
         )
         for chunk in chunks
     ]
-   
-    embedding_model = OpenAIEmbeddings()
-    embeddings = embedding_model.embed_documents([doc.page_content for doc in docs])
-    # print("Primer embedding:", embeddings[0][:5])  # imprime los primeros 5 valores
 
+    embedding_model = OpenAIEmbeddings()
+    
     PGVector.from_documents(
         documents=docs,
         embedding=embedding_model,
-        connection="postgresql+psycopg://obedmirandapicado:obed12345@localhost:5432/pdf_chat",
-        collection_name="pdf_embeddings"
+        connection=os.getenv("PGVECTOR_URL"),
+        collection_name=f"pdf_embeddings_{document_id}",
+        use_jsonb=True
     )
 
-
     return {
-    "message": "Embeddings stored successfully",
-    "chunks_indexed": len(docs)
-}
+        "message": "Embeddings stored successfully",
+        "chunks_indexed": len(docs)
+    }

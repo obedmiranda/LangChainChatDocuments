@@ -1,8 +1,6 @@
 import uuid
 from fastapi import UploadFile
 from app.services.pdf_service import extract_text_from_pdf
-from langchain_postgres.vectorstores import PGVector
-from langchain_openai import OpenAIEmbeddings
 from app.utils.text_splitter_utils import text_splitter
 from app.services.embedding_service import store_embeddings
 
