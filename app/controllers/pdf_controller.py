@@ -11,10 +11,14 @@ async def handle_pdf_upload(file: UploadFile):
     chunks = text_splitter(text)
     result_embedding = await store_embeddings(chunks, session_id,document_id)
     print(result_embedding)
+    
     return {
         "filename": file.filename,
         "text_length": len(text),
-        "preview": text[:300]  # primeras 300 letras
+        "preview": text[:300],
+        "session_id": session_id,
+        "document_id": document_id,
+        "collection_name": "pdf_embeddings",  # o el nombre dinámico si lo manejas así
+        "embedding_result": result_embedding
     }
-
     
