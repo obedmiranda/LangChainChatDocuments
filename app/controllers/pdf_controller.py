@@ -18,7 +18,7 @@ async def handle_pdf_upload(file: UploadFile):
         "preview": text[:300],
         "session_id": session_id,
         "document_id": document_id,
-        "collection_name": "pdf_embeddings",  # o el nombre dinámico si lo manejas así
+        "collection_name": "pdf_embeddings", 
         "embedding_result": result_embedding
     }
     

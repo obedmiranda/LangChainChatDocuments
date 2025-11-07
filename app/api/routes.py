@@ -11,7 +11,14 @@ async def upload_pdf(file: UploadFile=File(...)):
 class AskRequest(BaseModel):
     query: str
     collection_name: str
+    session_id: str | None = None
+    document_id: str | None = None
 
 @router.post("/ask")
 async def ask_pdf(request: AskRequest):
-    return await handle_ask_request(request.query, request.collection_name)
+    return await handle_ask_request(
+        query=request.query,
+        collection_name=request.collection_name,
+        session_id=request.session_id,
+        document_id=request.document_id,
+    )
