@@ -30,7 +30,7 @@ async def handle_ask_request(query: str, collection_name: str, session_id: str =
         }
 
     except Exception as e:
-        print("❌ Error in handle_ask_request:", e)
+        print("Error in handle_ask_request:", e)
         return {
             "error": str(e),
             "message": "Error generating answer from chain."

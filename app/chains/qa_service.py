@@ -80,7 +80,7 @@ async def run_qa_chain(query: str, collection_name: str):
         }
 
     except Exception as e:
-        print("❌ Error running QA chain:", e)
+        print("Error running QA chain:", e)
         return {
             "error": str(e),
             "answer": "There was an error running the QA chain.",
